@@ -1,3 +1,32 @@
+/* eslint-disable no-unused-vars */
 
 // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+const isValid = function(s) {
+
+    let stackOne = []
+    let top = -1 
+
+    for(let i=0;i<s.length;i++){
+        let para = s[i]
+        if(para == "(" || para == "[" || para == "{"){
+            stackOne.push(para)
+            top +=1
+        }else if ( para == ")" || para == "]" || para == "}"){
+            if((stackOne[top]=="("&& para == ")") ||(stackOne[top]=="["&& para == "]")||(stackOne[top]=="{"&& para == "}")  ){
+                stackOne.pop()
+                top -=1 
+            }else return false
+        }else return false
+    }
+
+    if(stackOne.length==0){
+        return true
+    }else return false
+
+};
+
+
+// optimised solution 
+
 
